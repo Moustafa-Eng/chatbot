@@ -1,10 +1,12 @@
 from flask import Flask, request, jsonify, send_from_directory
+from flask_cors import CORS  # Import CORS
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory
 
 app = Flask(__name__, static_url_path='', static_folder='.')
+CORS(app)  # Enable CORS for the entire app
 
 # Setup the LLM and chain
 model_name = "gemini-1.5-flash-latest"
@@ -12,7 +14,8 @@ google_api_key = "AIzaSyAj6K4ed52KIbKr0_DmYatNAD1eoecDyK0"
 
 llm = ChatGoogleGenerativeAI(model=model_name, google_api_key=google_api_key, temperature=0.0)
 
-template ="""Act as doctor assistant and your name samy and your specialization in heart disease and covid-19 and your task is to answer the questions in the end
+template ="""
+Act as doctor assistant and your name samy and your specialization in heart disease and covid-19 and your task is to answer the questions in the end
 some example:
 quetion:Who are the key scientists who contributed to the development of microcardial ECG?
 
