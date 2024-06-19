@@ -4,7 +4,7 @@ from langchain.prompts import PromptTemplate
 from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory
 
-app2 = Flask(__name__, static_url_path='', static_folder='.')
+app = Flask(__name__, static_url_path='', static_folder='.')
 
 # Setup the LLM and chain
 model_name = "gemini-1.5-flash-latest"
@@ -177,7 +177,7 @@ prompt = PromptTemplate.from_template(template)
 chain = ConversationChain(llm=llm, memory=chat_memory, prompt=prompt, verbose=False)
 
 # API endpoint to handle chat requests
-@app2.route('/chat', methods=['POST'])
+@app.route('/chat', methods=['POST'])
 def chat():
     user_input = request.json.get("input")
     print(f"Received input: {user_input}")  # Debug print
@@ -186,9 +186,9 @@ def chat():
     return jsonify({"response": response})
 
 # Serve the frontend
-@app2.route('/')
+@app.route('/')
 def index():
     return send_from_directory('.', 'index.html')
 
 if __name__ == '__main__':
-    app2.run(debug=True)
+    app.run(debug=True)
