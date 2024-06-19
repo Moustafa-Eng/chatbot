@@ -1,0 +1,147 @@
+[
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "jsonify",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "send_from_directory",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "ChatGoogleGenerativeAI",
+        "importPath": "langchain_google_genai",
+        "description": "langchain_google_genai",
+        "isExtraImport": true,
+        "detail": "langchain_google_genai",
+        "documentation": {}
+    },
+    {
+        "label": "PromptTemplate",
+        "importPath": "langchain.prompts",
+        "description": "langchain.prompts",
+        "isExtraImport": true,
+        "detail": "langchain.prompts",
+        "documentation": {}
+    },
+    {
+        "label": "ConversationChain",
+        "importPath": "langchain.chains",
+        "description": "langchain.chains",
+        "isExtraImport": true,
+        "detail": "langchain.chains",
+        "documentation": {}
+    },
+    {
+        "label": "ConversationBufferMemory",
+        "importPath": "langchain.memory",
+        "description": "langchain.memory",
+        "isExtraImport": true,
+        "detail": "langchain.memory",
+        "documentation": {}
+    },
+    {
+        "label": "chat",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def chat():\n    user_input = request.json.get(\"input\")\n    print(f\"Received input: {user_input}\")  # Debug print\n    response = chain.invoke({\"input\": user_input})['response']\n    print(f\"Generated response: {response}\")  # Debug print\n    return jsonify({\"response\": response})\n# Serve the frontend\n@app2.route('/')\ndef index():\n    return send_from_directory('.', 'index.html')",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "index",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def index():\n    return send_from_directory('.', 'index.html')\nif __name__ == '__main__':\n    app2.run(debug=True)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app2",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app2 = Flask(__name__, static_url_path='', static_folder='.')\n# Setup the LLM and chain\nmodel_name = \"gemini-1.5-flash-latest\"\ngoogle_api_key = \"AIzaSyAj6K4ed52KIbKr0_DmYatNAD1eoecDyK0\"\nllm = ChatGoogleGenerativeAI(model=model_name, google_api_key=google_api_key, temperature=0.0)\ntemplate =\"\"\"Act as doctor assistant and your name samy and your specialization in heart disease and covid-19 and your task is to answer the questions in the end\nsome example:\nquetion:Who are the key scientists who contributed to the development of microcardial ECG?\nanswer:The development of microcardial ECG (or microelectrode recording from cardiac tissues) involved contributions from multiple scientists over the years. Some of the key figures include:\nWillem Einthoven - Inventor of the electrocardiogram (ECG) in the early 20th century, which laid the groundwork for more specialized forms like the microcardial ECG.",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "model_name",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "model_name = \"gemini-1.5-flash-latest\"\ngoogle_api_key = \"AIzaSyAj6K4ed52KIbKr0_DmYatNAD1eoecDyK0\"\nllm = ChatGoogleGenerativeAI(model=model_name, google_api_key=google_api_key, temperature=0.0)\ntemplate =\"\"\"Act as doctor assistant and your name samy and your specialization in heart disease and covid-19 and your task is to answer the questions in the end\nsome example:\nquetion:Who are the key scientists who contributed to the development of microcardial ECG?\nanswer:The development of microcardial ECG (or microelectrode recording from cardiac tissues) involved contributions from multiple scientists over the years. Some of the key figures include:\nWillem Einthoven - Inventor of the electrocardiogram (ECG) in the early 20th century, which laid the groundwork for more specialized forms like the microcardial ECG.\nNobel Laureates Alan Hodgkin and Andrew Huxley - Their work on the ionic mechanisms underlying action potentials in the 1950s provided a deeper understanding of cardiac electrophysiology.\nBrian Hoffman - His research on cardiac electrophysiology in the latter half of the 20th century helped in the refinement of techniques for recording electrical activity from cardiac tissues.",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "google_api_key",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "google_api_key = \"AIzaSyAj6K4ed52KIbKr0_DmYatNAD1eoecDyK0\"\nllm = ChatGoogleGenerativeAI(model=model_name, google_api_key=google_api_key, temperature=0.0)\ntemplate =\"\"\"Act as doctor assistant and your name samy and your specialization in heart disease and covid-19 and your task is to answer the questions in the end\nsome example:\nquetion:Who are the key scientists who contributed to the development of microcardial ECG?\nanswer:The development of microcardial ECG (or microelectrode recording from cardiac tissues) involved contributions from multiple scientists over the years. Some of the key figures include:\nWillem Einthoven - Inventor of the electrocardiogram (ECG) in the early 20th century, which laid the groundwork for more specialized forms like the microcardial ECG.\nNobel Laureates Alan Hodgkin and Andrew Huxley - Their work on the ionic mechanisms underlying action potentials in the 1950s provided a deeper understanding of cardiac electrophysiology.\nBrian Hoffman - His research on cardiac electrophysiology in the latter half of the 20th century helped in the refinement of techniques for recording electrical activity from cardiac tissues.\nFirst Research Using Microcardial ECG in Diagnosis",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "llm",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "llm = ChatGoogleGenerativeAI(model=model_name, google_api_key=google_api_key, temperature=0.0)\ntemplate =\"\"\"Act as doctor assistant and your name samy and your specialization in heart disease and covid-19 and your task is to answer the questions in the end\nsome example:\nquetion:Who are the key scientists who contributed to the development of microcardial ECG?\nanswer:The development of microcardial ECG (or microelectrode recording from cardiac tissues) involved contributions from multiple scientists over the years. Some of the key figures include:\nWillem Einthoven - Inventor of the electrocardiogram (ECG) in the early 20th century, which laid the groundwork for more specialized forms like the microcardial ECG.\nNobel Laureates Alan Hodgkin and Andrew Huxley - Their work on the ionic mechanisms underlying action potentials in the 1950s provided a deeper understanding of cardiac electrophysiology.\nBrian Hoffman - His research on cardiac electrophysiology in the latter half of the 20th century helped in the refinement of techniques for recording electrical activity from cardiac tissues.\nFirst Research Using Microcardial ECG in Diagnosis\nquetion:What was the first research that used microcardial ECG in diagnosis?",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "chat_memory",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "chat_memory = ConversationBufferMemory(ai_prefix=\"samy's answer\")\nprompt = PromptTemplate.from_template(template)\nchain = ConversationChain(llm=llm, memory=chat_memory, prompt=prompt, verbose=False)\n# API endpoint to handle chat requests\n@app2.route('/chat', methods=['POST'])\ndef chat():\n    user_input = request.json.get(\"input\")\n    print(f\"Received input: {user_input}\")  # Debug print\n    response = chain.invoke({\"input\": user_input})['response']\n    print(f\"Generated response: {response}\")  # Debug print",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "prompt",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "prompt = PromptTemplate.from_template(template)\nchain = ConversationChain(llm=llm, memory=chat_memory, prompt=prompt, verbose=False)\n# API endpoint to handle chat requests\n@app2.route('/chat', methods=['POST'])\ndef chat():\n    user_input = request.json.get(\"input\")\n    print(f\"Received input: {user_input}\")  # Debug print\n    response = chain.invoke({\"input\": user_input})['response']\n    print(f\"Generated response: {response}\")  # Debug print\n    return jsonify({\"response\": response})",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "chain",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "chain = ConversationChain(llm=llm, memory=chat_memory, prompt=prompt, verbose=False)\n# API endpoint to handle chat requests\n@app2.route('/chat', methods=['POST'])\ndef chat():\n    user_input = request.json.get(\"input\")\n    print(f\"Received input: {user_input}\")  # Debug print\n    response = chain.invoke({\"input\": user_input})['response']\n    print(f\"Generated response: {response}\")  # Debug print\n    return jsonify({\"response\": response})\n# Serve the frontend",
+        "detail": "app",
+        "documentation": {}
+    }
+]
